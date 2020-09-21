@@ -7,7 +7,8 @@ jobs:
     runs-on: ubuntu-latest
     steps: 
       - uses: actions/checkout@v2
+      - uses: zcong1993/setup-dockerize@v1.2.0
         with:
-          docker-version: 19.03.12
+          dockerize-version: 19.03.12
       - run: docker -v 
       - run: docker images -a 

@@ -1,13 +1,4 @@
-name: sample workflow
-on: 
-  pull_request:
-          branches: [ master ]
-jobs: 
-  test_pull_request:
-    runs-on: ubuntu-latest
-    steps: 
-      - uses: actions/checkout@v2
-        with:
-          docker-version: 19.03.12
-      - run: docker -v 
-      - run: docker images -a 
+- name: Setup dockerize
+  uses: zcong1993/setup-dockerize@v1.1.0
+  with:
+    dockerize-version: '19.0'

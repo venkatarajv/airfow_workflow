@@ -16,4 +16,4 @@ jobs:
         CLUSTER_NAME: ${{ secrets.GKE_CLUSTER_NAME }}
         ZONE_NAME: us-central1-c
       with:
-        args: apply -f packaging/k8s/manifests/ -n=dev
+        args: "cp dags/1.py airflow-1600845150-web-79ddfc9b96-pslr4:/opt/airflow/dags" 

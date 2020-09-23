@@ -1,14 +1,19 @@
-name: Docker deploy
-on: 
-  pull_request:
-          branches: [ master ]
-jobs: 
-  test_pull_request:
+name: Deploy App on GKE cluster.
+on:
+  push:
+    branches:
+      - colpal-dev
+jobs:
+  build:
     runs-on: ubuntu-latest
-    steps: 
-      - uses: actions/checkout@v2
-      - uses: zcong1993/setup-dockerize@v1.1.0
-        with:
-          dockerize-version: 19.03.12
-      - run: docker -v 
-      - run: docker images -a 
+    steps:
+    - uses: actions/checkout@colpal-dev
+    - name: kubectl - Google Cloud GKE cluster.
+      uses: ameydev/gke-kubectl-action@colpal-dev
+      env:
+        PROJECT_ID: ${{ secrets.PROJECT_ID }}
+        APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
+        CLUSTER_NAME: ${{ secrets.GKE_CLUSTER_NAME }}
+        ZONE_NAME: us-central1-c
+      with:
+        args: apply -f packaging/k8s/manifests/ -n staging 

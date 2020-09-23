@@ -1,0 +1,22 @@
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+ name: airflow-dags
+spec:
+ accessModes:
+ - ReadOnlyMany
+ capacity:
+ storage: 2Gi
+ hostPath:
+ path: "/opt/airflow/dags"
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+ name: airflow-dags
+spec:
+ accessModes:
+ - ReadOnlyMany
+ resources:
+ requests:
+ storage: 2Gi

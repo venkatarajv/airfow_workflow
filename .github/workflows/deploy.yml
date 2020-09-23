@@ -2,7 +2,7 @@ name: Deploy App on GKE cluster.
 on:
   push:
     branches:
-      - colpal-dev
+      - colpal-prod
 jobs:
   build:
     runs-on: ubuntu-latest

@@ -4,16 +4,20 @@ ARG=$1
 
 if [ "$ARG" == "colpal-dev" ]
 then 
-	NAMESPACE=colpal-dev
+	NAMESPACE="colpal-dev"
+
 elif [ "$ARG" == "colpal-test" ]
 then
         NAMESPACE="colpal-test"
+
 elif [ "$ARG" == "colpal-mockprod" ]
 then
         NAMESPACE="colpal-mockprod"
+
 elif [ "$ARG" ==  "colpal-prod" ]
 then
         NAMESPACE="colpal-prod"
+
 else 
 	echo "NO NAMESPACES FOUND"
 	exit 1

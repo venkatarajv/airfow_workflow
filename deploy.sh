@@ -16,7 +16,7 @@ then
         NAMESPACE=$ARG
 else 
 	echo "NO NAMESPACES FOUND"
-	exit 0
+	exit 1
 fi
 
 echo $NAMESPACE

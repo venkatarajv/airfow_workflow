@@ -10,6 +10,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+    - name: Extract branch name
+      shell: bash
+      run: echo "::set-env name=BRANCH_NAME::$(echo ${GITHUB_REF##*/} )
     - uses: actions/checkout@master
     - name: kubectl - Google Cloud GKE cluster.
       uses: venkatarajv/gke-kubectl-action@master
@@ -20,4 +23,5 @@ jobs:
         ZONE_NAME: us-central1-c
       with:
 #         args: "cp dags/hello.py airflow-1600845150-web-79ddfc9b96-pslr4:/opt/airflow/dags -n=dev " 
-        args: "chmod u+x ./deploy.sh && ./deploy.sh ${GITHUB_REF##*/}"
+        #args: "chmod u+x ./deploy.sh && ./deploy.sh ${GITHUB_REF##*/}"
+        args: "chmod u+x ./deploy.sh && ./deploy.sh $BRANCH_NAME "

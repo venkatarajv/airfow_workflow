@@ -19,6 +19,8 @@ else
 	exit 0
 fi
 
+echo $NAMESPACE
+
 POD=`kubectl get pods --namespace $NAMESPACE -l "component=web,app=airflow" -o jsonpath="{.items[0].metadata.name}"`
 
 for entry in "dags"/*
